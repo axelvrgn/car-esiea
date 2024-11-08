@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, model } from '@angular/core';
 import { getDatabase, ref, set, onValue } from 'firebase/database';
+import { planet } from 'ionicons/icons';
 
 export interface ICar {
-  fullName: string;
-  phoneNumber: string;
+  marque: string;
+  model: string;
+  plate: string;
 }
 
 @Injectable({
@@ -12,23 +14,24 @@ export interface ICar {
 export class CarService {
   constructor() {}
 
-  public saveCar(contact: ICar): Promise<void> {
-    return set(ref(getDatabase(), 'cars/' + contact.phoneNumber), {
-      fullName: contact.fullName,
-      phoneNumber: contact.phoneNumber,
+  public saveCar(car: ICar): Promise<void> {
+    return set(ref(getDatabase(), 'cars/' + car.plate), {
+      marque: car.marque,
+      model: car.model,
+      planet: car.plate,
     });
   }
 
   public getAllCar(): Promise<ICar[]> {
     return new Promise((resolve, reject) => {
-      const contactsRef = ref(getDatabase(), 'cars/');
-      onValue(contactsRef, (snapshot) => {
+      const carsRef = ref(getDatabase(), 'cars/');
+      onValue(carsRef, (snapshot) => {
         const data = snapshot.val();
-        const contacts: ICar[] = [];
+        const cars: ICar[] = [];
         Object.entries(data).forEach((value) => {
-          contacts.push(value[1] as ICar);
+          cars.push(value[1] as ICar);
         });
-        resolve(contacts);
+        resolve(cars);
       });
     });
   }

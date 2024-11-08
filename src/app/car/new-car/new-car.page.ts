@@ -1,20 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { caretBack } from 'ionicons/icons';
+import { Router } from '@angular/router';
+import { CarService, ICar } from 'src/app/core/services/car/car.service';
 
 @Component({
   selector: 'app-new-car',
   templateUrl: './new-car.page.html',
   styleUrls: ['./new-car.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, IonicModule, ReactiveFormsModule],
 })
 export class NewCarPage implements OnInit {
+  public carForm = new FormGroup({
+    marque: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    model: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    plate: new FormControl('', [Validators.required, Validators.minLength(2)]),
+  });
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private carService: CarService, private router: Router) {
+    addIcons({ caretBack });
   }
 
+  ngOnInit() {}
+
+  public onSave(): void {
+    this.carService
+      .saveCar(this.carForm.value as unknown as ICar)
+      .then(() => {
+        this.router.navigate(['/car']);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }

@@ -1,13 +1,72 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="caret-back"></ion-back-button>
+    </ion-buttons>
     <ion-title>new-car</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">new-car</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="new-car">
+  <div>
+    <form [formGroup]="carForm">
+      <ion-item>
+        <ion-input
+          label="Marque"
+          labelPlacement="stacked"
+          placeholder="Peugeot"
+          formControlName="marque"
+        >
+        </ion-input>
+      </ion-item>
+      @if (carForm.get('marque')?.dirty) { @if
+      (carForm.get('marque')?.errors?.['required']) {
+      <span class="span-error">This field is required</span>
+      } @if (carForm.get('marque')?.errors?.['minlength']) {
+      <span class="span-error">Minimum characters should be 2.</span>
+      } }
+
+      <ion-item>
+        <ion-input
+          label="Modèle"
+          labelPlacement="stacked"
+          placeholder="508"
+          formControlName="model"
+        >
+        </ion-input>
+      </ion-item>
+      @if (carForm.get('model')?.dirty) { @if
+      (carForm.get('model')?.errors?.['required']) {
+      <span class="span-error">This field is required</span>
+      } @if (carForm.get('model')?.errors?.['minlength']) {
+      <span class="span-error">Minimum characters should be 2.</span>
+      } }
+
+      <ion-item>
+        <ion-input
+          label="Plaque d'immatriculation"
+          labelPlacement="stacked"
+          placeholder="AB-123-CB"
+          formControlName="plate"
+        >
+        </ion-input>
+      </ion-item>
+      @if (carForm.get('plate')?.dirty) { @if
+      (carForm.get('plate')?.errors?.['required']) {
+      <span class="span-error">This field is required</span>
+      } @if (carForm.get('plate')?.errors?.['minlength']) {
+      <span class="span-error">Minimum characters should be 2.</span>
+      } }
+
+      <div class="container-button">
+        <ion-button
+          size="medium"
+          [disabled]="carForm.invalid"
+          (click)="onSave()"
+        >
+          Save
+        </ion-button>
+      </div>
+    </form>
+  </div>
 </ion-content>
