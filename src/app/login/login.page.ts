@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
         this.loginForm.value as unknown as Partial<IUser>
       )
       .then(() => {
-        this.router.navigate(['contact']);
+        this.router.navigate(['car']);
       })
       .catch((error) => {
         console.log(error);

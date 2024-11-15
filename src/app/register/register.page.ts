@@ -63,7 +63,7 @@ export class RegisterPage implements OnInit {
       .then((userCreated: boolean | unknown) => {
         console.log(userCreated);
         if (userCreated) {
-          this.router.navigate(['contact']);
+          this.router.navigate(['car']);
         }
       })
       .catch((error) => {
