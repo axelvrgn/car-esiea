@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button icon="caret-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>new-car</ion-title>
+    <ion-title>Création d'une nouvelle voiture</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +23,9 @@
       (carForm.get('marque')?.errors?.['required']) {
       <span class="span-error">This field is required</span>
       } @if (carForm.get('marque')?.errors?.['minlength']) {
-      <span class="span-error">Minimum characters should be 2.</span>
+      <span class="span-error"
+        >La marque doit contenir au moins 2 caractères</span
+      >
       } }
 
       <ion-item>
@@ -39,7 +41,9 @@
       (carForm.get('model')?.errors?.['required']) {
       <span class="span-error">This field is required</span>
       } @if (carForm.get('model')?.errors?.['minlength']) {
-      <span class="span-error">Minimum characters should be 2.</span>
+      <span class="span-error"
+        >Le modèle doit contenir au moins 2 caractères</span
+      >
       } }
 
       <ion-item>
@@ -55,7 +59,10 @@
       (carForm.get('plate')?.errors?.['required']) {
       <span class="span-error">This field is required</span>
       } @if (carForm.get('plate')?.errors?.['minlength']) {
-      <span class="span-error">Minimum characters should be 2.</span>
+      <span class="span-error"
+        >La plaque d'immatriculation doit doit contenir au moins 2
+        caractères</span
+      >
       } }
 
       <div class="container-button">
@@ -64,7 +71,7 @@
           [disabled]="carForm.invalid"
           (click)="onSave()"
         >
-          Save
+          Enregistrer
         </ion-button>
       </div>
     </form>
