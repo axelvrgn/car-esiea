@@ -1,13 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>car</ion-title>
+    <ion-title>Car</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon
+        id="icon-add"
+        name="add-circle"
+        color="primary"
+        (click)="goToNewContactPage()"
+      ></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">car</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    @for(car of cars; track car) {
+    <ion-item>
+      <ion-label>
+        <h2>{{ car.marque }}</h2>
+        <p>{{ car.model }}</p>
+        <p>{{car.plate}}</p>
+      </ion-label>
+    </ion-item>
+    }
+  </ion-list>
 </ion-content>

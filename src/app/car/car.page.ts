@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { addCircle } from 'ionicons/icons';
 import { Router } from '@angular/router';
-import { ICar, CarService } from '../core/services/car/car.service';
+import { CarService, ICar } from '../core/services/car/car.service';
 
 @Component({
   selector: 'app-car',
@@ -35,7 +35,7 @@ export class CarPage implements OnInit {
     });
   }
 
-  public goToNewCarPage(): void {
+  public goToNewContactPage(): void {
     this.router.navigate(['/car/new']);
   }
 }

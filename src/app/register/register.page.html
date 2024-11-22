@@ -18,9 +18,11 @@
       </ion-item>
       @if (registerForm.get('fullName')?.dirty) { @if
       (registerForm.get('fullName')?.errors?.['required']) {
-      <span class="span-error">This field is required</span>
+      <span class="span-error">{{requiredFieldMessage}}</span>
       } @if (registerForm.get('fullName')?.errors?.['minlength']) {
-      <span class="span-error">Minimum characters should be 2.</span>
+      <span class="span-error"
+        >Le nom complet doit contenir au moins 2 caractères</span
+      >
       } }
 
       <ion-item>
@@ -34,9 +36,9 @@
       </ion-item>
       @if (registerForm.get('email')?.dirty) { @if
       (registerForm.get('email')?.errors?.['required']) {
-      <span class="span-error">This field is required</span>
+      <span class="span-error">{{requiredFieldMessage}}</span>
       } @if (registerForm.get('email')?.errors?.['email']) {
-      <span class="span-error">Your e-mail is invalid.</span>
+      <span class="span-error">Veuillez entrer une adresse e-mail valide</span>
       } }
 
       <ion-item>
@@ -56,10 +58,10 @@
       </ion-item>
       @if (registerForm.get('password')?.dirty) { @if
       (registerForm.get('password')?.errors?.['required']) {
-      <span class="span-error">This field is required</span>
+      <span class="span-error">{{requiredFieldMessage}}</span>
       } @if (registerForm.get('password')?.errors?.['minlength']) {
       <span class="span-error"
-        >Your password should be strong with at least 08 characters.</span
+        >Votre mot de passe doit contenir au moins 8 caractères</span
       >
       } }
 

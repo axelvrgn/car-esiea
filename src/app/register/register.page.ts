@@ -15,6 +15,7 @@ import {
   AuthenticationService,
   IUser,
 } from '../core/services/authentication/authentication.service';
+import { REQUIRED_FIELD_MESSAGE } from '../constants/app.constants';
 
 @Component({
   selector: 'app-register',
@@ -37,6 +38,7 @@ export class RegisterPage implements OnInit {
   });
   public passwordType = 'password';
   public passwordIcon = 'eye-outline';
+  public requiredFieldMessage = REQUIRED_FIELD_MESSAGE;
 
   constructor(
     private authenticationService: AuthenticationService,

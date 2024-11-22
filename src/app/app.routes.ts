@@ -17,11 +17,16 @@ export const routes: Routes = [
   },
   {
     path: 'car',
-    loadComponent: () => import('./car/car.page').then((m) => m.CarPage),
-  },
-  {
-    path: 'new-car',
-    loadComponent: () =>
-      import('./car/new-car/new-car.page').then((m) => m.NewCarPage),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./car/car.page').then((m) => m.CarPage),
+      },
+      {
+        path: 'new',
+        loadComponent: () =>
+          import('./car/new-car/new-car.page').then((m) => m.NewCarPage),
+      },
+    ],
   },
 ];
