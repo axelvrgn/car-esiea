@@ -63,7 +63,7 @@ export class RegisterPage implements OnInit {
     this.authenticationService
       .signUpWithEmailAndPassword(this.registerForm.value as unknown as IUser)
       .then((userCreated: boolean | unknown) => {
-        console.log(userCreated);
+        console.log('userCreated : ' + userCreated);
         if (userCreated) {
           this.router.navigate(['car']);
         }

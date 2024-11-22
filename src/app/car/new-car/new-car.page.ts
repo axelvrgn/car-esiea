@@ -12,6 +12,7 @@ import { addIcons } from 'ionicons';
 import { caretBack } from 'ionicons/icons';
 import { Router } from '@angular/router';
 import { CarService, ICar } from 'src/app/core/services/car/car.service';
+import { REQUIRED_FIELD_MESSAGE } from 'src/app/constants/app.constants';
 
 @Component({
   selector: 'app-new-car',
@@ -26,6 +27,7 @@ export class NewCarPage implements OnInit {
     model: new FormControl('', [Validators.required, Validators.minLength(2)]),
     plate: new FormControl('', [Validators.required, Validators.minLength(2)]),
   });
+  public requiredFieldMessage = REQUIRED_FIELD_MESSAGE;
 
   constructor(private carService: CarService, private router: Router) {
     addIcons({ caretBack });

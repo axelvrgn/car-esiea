@@ -2,10 +2,12 @@
   .container-button {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    align-items: center;
+    width: 100%;
+  }
 
-    ion-button {
-      width: 80%;
-    }
+  .span-error {
+    color: red;
+    font-size: 12px;
   }
 }

@@ -21,7 +21,7 @@
       </ion-item>
       @if (carForm.get('marque')?.dirty) { @if
       (carForm.get('marque')?.errors?.['required']) {
-      <span class="span-error">This field is required</span>
+      <span class="span-error">{{requiredFieldMessage}}</span>
       } @if (carForm.get('marque')?.errors?.['minlength']) {
       <span class="span-error"
         >La marque doit contenir au moins 2 caractères</span
@@ -39,7 +39,7 @@
       </ion-item>
       @if (carForm.get('model')?.dirty) { @if
       (carForm.get('model')?.errors?.['required']) {
-      <span class="span-error">This field is required</span>
+      <span class="span-error">{{requiredFieldMessage}}</span>
       } @if (carForm.get('model')?.errors?.['minlength']) {
       <span class="span-error"
         >Le modèle doit contenir au moins 2 caractères</span
