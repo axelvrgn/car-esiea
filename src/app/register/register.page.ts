@@ -25,17 +25,28 @@ import { REQUIRED_FIELD_MESSAGE } from '../constants/app.constants';
   imports: [CommonModule, IonicModule, FormsModule, ReactiveFormsModule],
 })
 export class RegisterPage implements OnInit {
-  public registerForm = new FormGroup({
-    fullName: new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-    ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-    ]),
-  });
+  public registerForm = new FormGroup(
+    {
+      fullName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]{10}$'),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+    },
+    { validators: this.passwordMatchValidator }
+  );
   public passwordType = 'password';
   public passwordIcon = 'eye-outline';
   public requiredFieldMessage = REQUIRED_FIELD_MESSAGE;
@@ -48,6 +59,15 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {}
+
+  private passwordMatchValidator(
+    formGroup: FormGroup
+  ): null | { passwordMismatch: true } {
+    return formGroup.get('password')?.value ===
+      formGroup.get('confirmPassword')?.value
+      ? null
+      : { passwordMismatch: true };
+  }
 
   public onToggleShowPassword(): void {
     if (this.passwordType === 'password') {

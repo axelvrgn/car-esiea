@@ -41,6 +41,22 @@
 
       <ion-item>
         <ion-input
+          label="Numéro de téléphone"
+          label-placement="stacked"
+          placeholder="0708090102"
+          formControlName="phoneNumber"
+          type="tel"
+        />
+      </ion-item>
+      @if (registerForm.get('phoneNumber')?.dirty) { @if
+      (registerForm.get('email')?.errors?.['required']) {
+      <span class="span-error">{{requiredFieldMessage}}</span>
+      } @if (registerForm.get('email')?.errors?.['email']) {
+      <span class="span-error">Veuillez entrer une adresse e-mail valide</span>
+      } }
+
+      <ion-item>
+        <ion-input
           label="Mot de passe"
           label-placement="stacked"
           [type]="passwordType"
@@ -51,6 +67,7 @@
           id="icon-eye"
           [name]="passwordIcon"
           (click)="onToggleShowPassword()"
+          onkeypress="onToggleShowPassword()"
         />
       </ion-item>
       @if (registerForm.get('password')?.dirty) { @if
@@ -62,11 +79,38 @@
       >
       } }
 
+      <ion-item>
+        <ion-input
+          label="Confirmation du mot de passe"
+          label-placement="stacked"
+          [type]="passwordType"
+          placeholder="***********"
+          formControlName="confirmPassword"
+        />
+        <ion-icon
+          id="icon-eye"
+          [name]="passwordIcon"
+          (click)="onToggleShowPassword()"
+          onkeypress="onToggleShowPassword()"
+        />
+      </ion-item>
+      @if (registerForm.get('password')?.dirty) { @if
+      (registerForm.get('password')?.errors?.['required']) {
+      <span class="span-error">{{requiredFieldMessage}}</span>
+      } @if (registerForm.get('password')?.errors?.['minlength']) {
+      <span class="span-error"
+        >Votre mot de passe doit contenir au moins 8 caractères</span
+      >
+      } @if (registerForm.errors?.['passwordMismatch']) {
+      <span class="span-error">Les mots de passe ne correspondent pas</span>
+      } }
+
       <div class="container-button">
         <ion-button
           size="medium"
           [disabled]="registerForm.invalid"
           (click)="onSignUp()"
+          onkeypress="onSignUp()"
         >
           S'inscrire
         </ion-button>

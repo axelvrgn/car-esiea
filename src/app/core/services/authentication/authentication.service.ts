@@ -10,6 +10,7 @@ import { getDatabase, ref, set } from 'firebase/database';
 export interface IUser {
   fullName: string;
   email: string;
+  phoneNumber: string;
   password: string;
 }
 
@@ -28,6 +29,7 @@ export class AuthenticationService {
           set(ref(database, 'users/' + userCreated.user.uid), {
             email: user.email,
             fullName: user.fullName,
+            phoneNumber: user.phoneNumber,
           })
             .then(() => resolve(true))
             .catch((error) => reject(false));
