@@ -31,6 +31,7 @@ export class NewCarPage implements OnInit {
     backPicture: new FormControl(),
   });
   public requiredFieldMessage = REQUIRED_FIELD_MESSAGE;
+  public picutreErrorMessage: string | null = null;
 
   constructor(private carService: CarService, private router: Router) {
     addIcons({ caretBack });
@@ -54,23 +55,34 @@ export class NewCarPage implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length) {
       const file = input.files[0];
+
+      const maxSizeInBytes = 5 * 1024 * 1024;
+      if (file.size > maxSizeInBytes) {
+        this.picutreErrorMessage =
+          'La taille du fichier est trop grande. La taille maximale autorisée est de 5 Mo.';
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = () => {
         this.carForm.patchValue({ [field]: reader.result as string });
+        this.picutreErrorMessage = null;
       };
       reader.readAsDataURL(file);
     }
   }
 
   public onSave(): void {
-    this.carService
-      .saveCar(this.carForm.value as unknown as ICar)
-      .then(() => {
-        this.router.navigate(['/car']);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (this.carForm.valid) {
+      this.carService
+        .saveCar(this.carForm.value as unknown as ICar)
+        .then(() => {
+          this.router.navigate(['/car']);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   public goToCarPage(): void {

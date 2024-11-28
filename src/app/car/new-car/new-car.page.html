@@ -85,6 +85,9 @@
         >
         </ion-input>
       </ion-item>
+      @if (picutreErrorMessage) {
+      <span class="span-error">{{ picutreErrorMessage }}</span>
+      }
 
       <div class="container-button">
         <ion-button
