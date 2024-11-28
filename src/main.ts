@@ -21,6 +21,8 @@ const firebaseConfig = {
   storageBucket: 'car-esiea.firebasestorage.app',
   messagingSenderId: '178835345874',
   appId: '1:178835345874:web:add180018aadb2ba3f780b',
+  databaseURL:
+    'https://car-esiea-default-rtdb.europe-west1.firebasedatabase.app',
 };
 
 initializeApp(firebaseConfig);

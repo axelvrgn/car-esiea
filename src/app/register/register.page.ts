@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   FormsModule,
@@ -61,12 +62,18 @@ export class RegisterPage implements OnInit {
   ngOnInit() {}
 
   private passwordMatchValidator(
-    formGroup: FormGroup
-  ): null | { passwordMismatch: true } {
-    return formGroup.get('password')?.value ===
-      formGroup.get('confirmPassword')?.value
-      ? null
-      : { passwordMismatch: true };
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+    if (
+      password &&
+      confirmPassword &&
+      password.value !== confirmPassword.value
+    ) {
+      return { passwordMismatch: true };
+    }
+    return null;
   }
 
   public onToggleShowPassword(): void {

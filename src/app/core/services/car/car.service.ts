@@ -18,7 +18,7 @@ export class CarService {
     return set(ref(getDatabase(), 'cars/' + car.plate), {
       marque: car.marque,
       model: car.model,
-      planet: car.plate,
+      plate: car.plate,
     });
   }
 
