@@ -28,6 +28,10 @@ export class CarPage implements OnInit {
     });
   }
 
+  public viewCarDetail(plate: string): void {
+    this.router.navigate(['/car/', plate]);
+  }
+
   ionViewWillEnter() {
     this.carService.getAllCar().then((cars: ICar[]) => {
       console.log('On View Will Enter');

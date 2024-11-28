@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Car Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="car-detail">
+  <div *ngIf="car">
+    <ion-item>
+      <ion-label>Photo avant</ion-label>
+      <img
+        [src]="car.frontPicture"
+        alt="Front Picture"
+        *ngIf="car.frontPicture"
+      />
+    </ion-item>
+    <ion-item>
+      <ion-label>Photo arrière</ion-label>
+      <img [src]="car.backPicture" alt="Back Picture" *ngIf="car.backPicture" />
+    </ion-item>
+    <ion-item>
+      <ion-label>Marque</ion-label>
+      <ion-text>{{ car.marque }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Modèle</ion-label>
+      <ion-text>{{ car.model }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Plaque</ion-label>
+      <ion-text>{{ car.plate }}</ion-text>
+    </ion-item>
+  </div>
+</ion-content>

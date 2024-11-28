@@ -27,6 +27,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./car/new-car/new-car.page').then((m) => m.NewCarPage),
       },
+      {
+        path: ':plate',
+        loadComponent: () =>
+          import('./car/car-detail/car-detail.page').then(
+            (m) => m.CarDetailPage
+          ),
+      },
     ],
   },
 ];

@@ -1,11 +1,13 @@
 import { Injectable, model } from '@angular/core';
-import { getDatabase, ref, set, onValue } from 'firebase/database';
+import { getDatabase, ref, set, onValue, get } from 'firebase/database';
 import { planet } from 'ionicons/icons';
 
 export interface ICar {
   marque: string;
   model: string;
   plate: string;
+  frontPicture?: string;
+  backPicture?: string;
 }
 
 @Injectable({
@@ -33,6 +35,24 @@ export class CarService {
         });
         resolve(cars);
       });
+    });
+  }
+
+  public getCarByPlate(plate: string): Promise<ICar | null> {
+    return new Promise((resolve, reject) => {
+      const db = getDatabase();
+      const carRef = ref(db, 'cars/' + plate);
+      get(carRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            resolve(snapshot.val() as ICar);
+          } else {
+            resolve(null);
+          }
+        })
+        .catch((error) => {
+          reject(error);
+        });
     });
   }
 }

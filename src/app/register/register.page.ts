@@ -91,6 +91,7 @@ export class RegisterPage implements OnInit {
       .signUpWithEmailAndPassword(this.registerForm.value as unknown as IUser)
       .then((userCreated: boolean | unknown) => {
         console.log('userCreated : ' + userCreated);
+        console.log(userCreated ? 'true' : 'false');
         if (userCreated) {
           this.router.navigate(['car']);
         }
@@ -98,5 +99,9 @@ export class RegisterPage implements OnInit {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  public navigateToLogin(): void {
+    this.router.navigate(['login']);
   }
 }
