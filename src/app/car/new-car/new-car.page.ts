@@ -72,4 +72,8 @@ export class NewCarPage implements OnInit {
         console.log(error);
       });
   }
+
+  public goToCarPage(): void {
+    this.router.navigate(['/car']);
+  }
 }

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarService, ICar } from 'src/app/core/services/car/car.service';
+import { caretBack } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-car-detail',
@@ -15,7 +17,13 @@ import { CarService, ICar } from 'src/app/core/services/car/car.service';
 export class CarDetailPage implements OnInit {
   public car: ICar | null = null;
 
-  constructor(private route: ActivatedRoute, private carService: CarService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private carService: CarService,
+    private router: Router
+  ) {
+    addIcons({ caretBack });
+  }
 
   ngOnInit() {
     const plate = this.route.snapshot.paramMap.get('plate');
@@ -24,5 +32,9 @@ export class CarDetailPage implements OnInit {
         this.car = car;
       });
     }
+  }
+
+  public goToCarPage(): void {
+    this.router.navigate(['/car']);
   }
 }

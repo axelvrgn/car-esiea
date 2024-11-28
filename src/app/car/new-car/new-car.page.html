@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button icon="caret-back"></ion-back-button>
+      <ion-back-button
+        icon="caret-back"
+        (click)="goToCarPage()"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title>Création d'une nouvelle voiture</ion-title>
   </ion-toolbar>

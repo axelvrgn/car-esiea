@@ -1,6 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Car Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        icon="caret-back"
+        (click)="goToCarPage()"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Détail</ion-title>
   </ion-toolbar>
 </ion-header>
 
