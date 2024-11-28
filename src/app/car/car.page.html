@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Voiture</ion-title>
+    <ion-title>Voitures</ion-title>
     <ion-buttons slot="end">
       <ion-icon
         id="icon-add"
@@ -19,8 +19,8 @@
       <ion-col size="12">
         <ion-card (click)="viewCarDetail(car.plate)">
           <img
-            alt="Silhouette of mountains"
-            src="https://ionicframework.com/docs/img/demos/card-media.png"
+            alt="Photo avant"
+            [src]="car.frontPicture ? car.frontPicture  : 'https://ionicframework.com/docs/img/demos/card-media.png'"
           />
           <ion-card-header>
             <ion-card-title>{{ car.plate }}</ion-card-title>

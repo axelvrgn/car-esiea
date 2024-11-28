@@ -23,7 +23,6 @@ export class CarPage implements OnInit {
 
   ngOnInit() {
     this.carService.getAllCar().then((cars: ICar[]) => {
-      console.log('On Init');
       this.cars = cars;
     });
   }

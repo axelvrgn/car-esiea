@@ -15,14 +15,16 @@
     <ion-item>
       <ion-label>Photo avant</ion-label>
       <img
-        [src]="car.frontPicture"
-        alt="Front Picture"
-        *ngIf="car.frontPicture"
+        [src]="car.frontPicture ? car.frontPicture  : 'https://ionicframework.com/docs/img/demos/card-media.png'"
+        alt="Photo avant"
       />
     </ion-item>
     <ion-item>
       <ion-label>Photo arrière</ion-label>
-      <img [src]="car.backPicture" alt="Back Picture" *ngIf="car.backPicture" />
+      <img
+        [src]="car.backPicture ? car.backPicture  : 'https://ionicframework.com/docs/img/demos/card-media.png'"
+        alt="Photo arrière"
+      />
     </ion-item>
     <ion-item>
       <ion-label>Marque</ion-label>
