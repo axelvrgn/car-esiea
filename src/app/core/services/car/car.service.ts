@@ -21,6 +21,8 @@ export class CarService {
       marque: car.marque,
       model: car.model,
       plate: car.plate,
+      frontPicture: car.frontPicture,
+      backPicture: car.backPicture,
     });
   }
 

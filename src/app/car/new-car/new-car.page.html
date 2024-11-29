@@ -11,8 +11,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="new-car">
-  <div>
-    <form [formGroup]="carForm">
+  <div class="form-box">
+    <form [formGroup]="carForm" class="car-form">
       <ion-item>
         <ion-input
           label="Marque"
@@ -67,6 +67,26 @@
         caractères</span
       >
       } }
+
+      <ion-item>
+        <ion-input
+          label="Photo avant"
+          labelPlacement="stacked"
+          placeholder="url"
+          formControlName="frontPicture"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          label="Photo arrière"
+          labelPlacement="stacked"
+          placeholder="url"
+          formControlName="backPicture"
+        >
+        </ion-input>
+      </ion-item>
 
       <ion-item>
         <ion-input

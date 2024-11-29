@@ -47,4 +47,9 @@ export class AuthenticationService {
       user.password as string
     );
   }
+
+  public isLoggedIn(): boolean {
+    const auth = getAuth();
+    return auth.currentUser !== null;
+  }
 }

@@ -13,14 +13,12 @@
 <ion-content [fullscreen]="true" class="car-detail">
   <div *ngIf="car">
     <ion-item>
-      <ion-label>Photo avant</ion-label>
       <img
         [src]="car.frontPicture ? car.frontPicture  : 'https://ionicframework.com/docs/img/demos/card-media.png'"
         alt="Photo avant"
       />
     </ion-item>
     <ion-item>
-      <ion-label>Photo arrière</ion-label>
       <img
         [src]="car.backPicture ? car.backPicture  : 'https://ionicframework.com/docs/img/demos/card-media.png'"
         alt="Photo arrière"
@@ -35,7 +33,7 @@
       <ion-text>{{ car.model }}</ion-text>
     </ion-item>
     <ion-item>
-      <ion-label>Plaque</ion-label>
+      <ion-label>Plaque d'immatriculation</ion-label>
       <ion-text>{{ car.plate }}</ion-text>
     </ion-item>
   </div>

@@ -27,8 +27,8 @@ export class NewCarPage implements OnInit {
     marque: new FormControl('', [Validators.required, Validators.minLength(2)]),
     model: new FormControl('', [Validators.required, Validators.minLength(2)]),
     plate: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    frontPicture: new FormControl(),
-    backPicture: new FormControl(),
+    frontPicture: new FormControl(''),
+    backPicture: new FormControl(''),
   });
   public requiredFieldMessage = REQUIRED_FIELD_MESSAGE;
   public picutreErrorMessage: string | null = null;
